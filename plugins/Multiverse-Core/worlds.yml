@@ -70,11 +70,6 @@ world:
     pitch: 0.0
     yaw: 0.0
   spawning:
-    water_underground_creature:
-      spawn: true
-      tick-rate: -1
-      spawn-limit: -1
-      exceptions: []
     animal:
       spawn: true
       tick-rate: -1
@@ -85,12 +80,17 @@ world:
       tick-rate: -1
       spawn-limit: -1
       exceptions: []
-    misc:
+    ambient:
       spawn: true
       tick-rate: -1
       spawn-limit: -1
       exceptions: []
-    ambient:
+    water_underground_creature:
+      spawn: true
+      tick-rate: -1
+      spawn-limit: -1
+      exceptions: []
+    misc:
       spawn: true
       tick-rate: -1
       spawn-limit: -1
