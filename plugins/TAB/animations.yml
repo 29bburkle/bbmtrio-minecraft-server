@@ -1,0 +1,120 @@
+MyAnimation1:
+  change-interval: 100
+  texts:
+    - '&d-&3--------------'
+    - '&3-&d-&3-------------'
+    - '&3--&d-&3------------'
+    - '&3---&d-&3-----------'
+    - '&3----&d-&3----------'
+    - '&3-----&d-&3---------'
+    - '&3------&d-&3--------'
+    - '&3-------&d-&3-------'
+    - '&3--------&d-&3------'
+    - '&3---------&d-&3-----'
+    - '&3----------&d-&3----'
+    - '&3-----------&d-&3---'
+    - '&3------------&d-&3--'
+    - '&3-------------&d-&3-'
+    - '&3--------------&d-'
+    - '&3-------------&d-&3-'
+    - '&3------------&d-&3--'
+    - '&3-----------&d-&3---'
+    - '&3----------&d-&3----'
+    - '&3---------&d-&3-----'
+    - '&3--------&d-&3------'
+    - '&3-------&d-&3-------'
+    - '&3------&d-&3--------'
+    - '&3-----&d-&3---------'
+    - '&3----&d-&3----------'
+    - '&3---&d-&3-----------'
+    - '&3--&d-&3------------'
+    - '&3-&d-&3-------------'
+    - '&d-&3--------------'
+ServerName:
+  change-interval: 300
+  texts:
+  - '&c&lServerName'
+  - '&c&n&lServerName'
+  - '&b&lServerName'
+  - '&b&l&nServerName'
+  - '&e&lServerName'
+  - '&e&n&lServerName'
+web:
+  change-interval: 200
+  texts:
+  - '&ewww.youtube.com/@BBMTrio'
+  - '&ewww.youtube.com/@BBMTrio'
+  - '&ewww.youtube.com/@BBMTrio'
+  - '&ewww.youtube.com/@BBMTrio'
+  - '&ewww.youtube.com/@BBMTrio'
+  - '&ewww.youtube.com/@BBMTrio'
+  - '&6w&eww.youtube.com/@BBMTrio'
+  - '&ew&6w&ew.youtube.com/@BBMTrio'
+  - '&eww&6w&e.youtube.com/@BBMTrio'
+  - '&ewww&6.&eyoutube.com/@BBMTrio'
+  - '&ewww.&6y&eoutube.com/@BBMTrio'
+  - '&ewww.y&6o&eutube.com/@BBMTrio'
+  - '&ewww.yo&6u&etube.com/@BBMTrio'
+  - '&ewww.you&6t&eube.com/@BBMTrio'
+  - '&ewww.yout&6u&ebe.com/@BBMTrio'
+  - '&ewww.youtu&6b&ee.com/@BBMTrio'
+  - '&ewww.youtub&6e&e.com/@BBMTrio'
+  - '&ewww.youtube&6.&ecom/@BBMTrio'
+  - '&ewww.youtube.&6c&eom/@BBMTrio'
+  - '&ewww.youtube.c&6o&em/@BBMTrio'
+  - '&ewww.youtube.co&6m&e/@BBMTrio'
+  - '&ewww.youtube.com&6/&e@BBMTrio'
+  - '&ewww.youtube.com/&6@&eBBMTrio'
+  - '&ewww.youtube.com/@&6B&eBMTrio'
+  - '&ewww.youtube.com/@B&6B&eMTrio'
+  - '&ewww.youtube.com/@BB&6M&eTrio'
+  - '&ewww.youtube.com/@BBM&6T&erio'
+  - '&ewww.youtube.com/@BBMT&6r&eio'
+  - '&ewww.youtube.com/@BBMTr&6i&eo'
+  - '&ewww.youtube.com/@BBMTri&6o'
+  - '&ewww.youtube.com/@BBMTrio'
+  - '&ewww.youtube.com/@BBMTrio'
+  - '&ewww.youtube.com/@BBMTrio'
+  - '&ewww.youtube.com/@BBMTrio'
+  - '&ewww.youtube.com/@BBMTrio'
+  - '&ewww.youtube.com/@BBMTrio'
+vote:
+  change-interval: 1000
+  texts:
+  - '&avote.domain.com'
+  - '&a&nvote.domain.com'
+  - '&5vote.domain.com'
+  - '&5&nvote.domain.com'
+Welcome:
+  change-interval: 400
+  texts:
+  - '&7&lW_'
+  - '&7&lW_'
+  - '&7&lWe_'
+  - '&7&lWel_'
+  - '&7&lWelc_'
+  - '&7&lWelco_'
+  - '&7&lWelcom_'
+  - '&7&lWelcome_'
+  - '&7&lWelcome_'
+  - '&7&lWelcome_'
+  - '&7&lWelcome_'
+  - '&7&lWelcom_'
+  - '&7&lWelco_'
+  - '&7&lWelc_'
+  - '&7&lWel_'
+  - '&7&lWe_'
+  - '&7&lW_'
+  - '&7&lW_'
+time:
+  change-interval: 3000
+  texts:
+    - '&7Time &b%time%'
+    - '&7Date &b%date%'
+barcolors:
+  change-interval: 1000
+  texts:
+    - RED
+    - BLUE
+    - GREEN
+    - YELLOW

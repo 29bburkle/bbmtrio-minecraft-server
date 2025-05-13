@@ -1,0 +1,8 @@
+discord:
+  name: "<#7289da>&lDiscord"
+  url: "https://discord.gg/hGvzpCS8"
+  allowCommand: true
+youtube:
+  name: "<#ff0000>&lYouTube"
+  url: "https://youtube.com/@BBMTrio"
+  allowCommand: false

@@ -1,0 +1,660 @@
+# +----------------------------------------------------------------------------------------------+
+# |                                                                                              |
+# |                                         CoffeeProtect                                        |
+# |                                                                                              |
+# |                               Discord: https://discord.gg/m7j2Y9H                            |
+# |                                                                                              |
+# |                                           Author: Nik                                        |
+# |                                                                                              |
+# +----------------------------------------------------------------------------------------------+
+# The server name that will be shown in Player Logs
+server_name: Server
+
+# Should we enable alerts for admins when they join?
+toggle_alerts_on_join: true
+
+# How often should we clear invalid player cache? (In minutes)
+cache_interval: 10
+
+# Should we also send alerts in console?
+alert_console: true
+
+# Discord Settings
+discord:
+
+  # Would you like to Sync CoffeeProtect Alerts to your Discord Server?
+  enabled: false
+
+  # The webhook message name
+  webhook_name: CoffeeProtect
+
+  # The webhook icon url
+  webhook_icon_url: https://raw.githubusercontent.com/NikV2/CoffeeProtectAPI/main/img/ICON.png
+
+  # The Channel Webhook URL
+  # This is the URL that the webhooks will be sent to
+  webhook_url: ''
+
+# Log Settings
+logs:
+
+  # Should we enable logging?
+  enabled: true
+
+  # What type of Database should we use for logging?
+  # Supported types: YAML, MYSQL, SQLITE
+  type: YAML
+
+  # How often should the log queue task run
+  # This is the task that updates and writes all the logs into your database
+  # NOTE: Interval is in minutes
+  queue_task_interval: 5
+
+  # Logs older than this value of Days will be cleared
+  clear_days: 5
+
+  # MySQL Settings (Requires MySQL Type)
+  mysql:
+    host: localhost
+    port: 3306
+    database: database
+    user: root
+    password: ''
+    use_ssl: false
+
+# Client Settings
+client_settings:
+
+  # Should we alert the staff members when a player joins with a non vanilla client?
+  alert_non_vanilla: true
+
+  # Client Brands that contain the following, Will be prevented from joining the server
+  # NOTE: At least one value has to exist, If you want to disable this simply put something random
+  banned_clients:
+    - cmclient
+
+# Packet Decoder
+# CoffeeProtect uses its own custom ByteBuf reader that runs before any other Packet Listener or Decoder
+# This is very powerful since we can read, decode and check packets
+# Before PacketEvents, ViaVersion or even our Checks
+packet_decoder:
+
+  # Should we enable this?
+  enabled: true
+
+  # Should we inject players asynchronously?
+  inject_async: true
+
+  # Should we immediately disconnect the player?
+  # It's highly recommended you keep this enabled
+  disconnect: true
+
+  # Should we flag for this?
+  flag: true
+
+  # Should we prevent null addresses?
+  disable_null_address: true
+
+  # The minimum ByteBuf capacity
+  min_bytebuf_capacity: 0
+
+  # The minimum ByteBuf refcnt
+  min_bytebuf_refcnt: 1
+
+  # CoffeeProtect automatically assigns the best default value depending on your server
+  # This value may be modified within the decoder automatically
+  # NOTE: If you've recently changed your server version
+  # You should reset this file
+  max_bytebuf_size: 131072
+
+  # The maximum ByteBuf rate multiplier
+  # CoffeeProtect uses the max bytebuf size above as a default value
+  # Multiplied by this amount to use for a maximum ByteBuf rate
+  # Feel free to set this higher if you want it to be less strict
+  max_bytebuf_rate_multiplier: 10
+
+# Packet Limiter
+# This checks if the player sends too many packets within a time period
+packet_limiter:
+
+  # Should we enable this?
+  enabled: true
+
+  # The maximum packet rate
+  # Default is 220.0, which is around 800 packets per second depending on the packet rate settings
+  # Feel free to increase or decrease this value depending on your settings and server environment
+  max_packet_rate: 220.0
+
+  # The reset time (In milliseconds) between rate resets
+  # Default value is 1000 which is one second
+  reset_time: 1000
+
+  # Packet rate settings
+  # The default values are the recommended ones, but feel free to add, remove or modify any values
+  # NOTE: The default packet rate amount for packets not listed here is 1.0
+  # CoffeeProtect's Checks may modify the packet rate automatically in order to fix certain exploits
+  packet_rates:
+    PLAYER_FLYING: 0.125
+    PLAYER_POSITION: 0.125
+    PLAYER_POSITION_AND_ROTATION: 0.125
+    PLAYER_ROTATION: 0.125
+    CLIENT_SETTINGS: 0.5
+    PONG: 0.05
+    WINDOW_CONFIRMATION: 0.05
+    PLAYER_BLOCK_PLACEMENT: 0.5
+    USE_ITEM: 0.5
+    ANIMATION: 0.5
+    INTERACT_ENTITY: 0.5
+    STEER_VEHICLE: 0.125
+    VEHICLE_MOVE: 0.125
+    UPDATE_SIGN: 15.0
+    CRAFT_RECIPE_REQUEST: 20.0
+    PLAYER_ABILITIES: 5.0
+    ENTITY_ACTION: 2.0
+    TAB_COMPLETE: 3.25
+    PLUGIN_MESSAGE: 3.25
+    CLIENT_TICK_END: 0.125
+    CLICK_WINDOW: 0.75
+    CREATIVE_INVENTORY_ACTION: 0.15
+    CHAT_MESSAGE: 7.5
+    CHAT_COMMAND: 7.5
+    CHAT_COMMAND_UNSIGNED: 7.5
+    PLAYER_DIGGING: 0.75
+    EDIT_BOOK: 20.0
+
+# Should we validate certain actions?
+# This will check for certain actions that may allow duping or certain exploits to occur
+action_validator:
+
+  # Should we enable this?
+  enabled: true
+
+  # Should we disable map tracking?
+  disable_map_tracking: true
+
+  # Should we eject players with invalid vehicle status?
+  invalid_vehicle: true
+
+  # Should we kick for invalid player status?
+  invalid_player_status: true
+
+  # The maximum projectile velocity allowed
+  maximum_projectile_velocity: 125.0
+
+  # The delay between shear usages (In milliseconds)
+  shear_delay: 500
+
+  # The delay between container opening (In milliseconds)
+  container_open_delay: 100
+
+  # Should login attempts with null addresses be cancelled?
+  # This fixes certain login exploits
+  disable_null_address: true
+
+  # Should certain block placements be cancelled?
+  # This fixes a block placing exploit found in the newer versions of Minecraft that allows players to build in the air
+  disable_air_placements: true
+
+  # Should we cancel certain spawn eggs that can cause damage to the server?
+  invalid_egg_spawns: true
+
+  # Should we eject player vehicles when they quit?
+  # This fixes a rare issue that occurs with certain Protocol plugins and can lead to exploits
+  eject_vehicle_on_quit: true
+
+  # Should we close player inventories while using items?
+  # This fixes a known dupe method using tridents and many more
+  close_inventory_on_item_use: true
+
+  # Should we close player inventories that are unmatched?
+  close_inventory_on_unmatched_clicks: true
+
+  # Should we close player inventories when they break blocks?
+  close_inventory_on_block_break: true
+
+  # Should we close player inventories when they teleport?
+  close_inventory_on_teleport: true
+
+  # Should we close player inventories when they quit?
+  close_inventory_on_quit: true
+
+  # Should we close inventories from entities inside unloaded chunks?
+  close_inventory_on_chunk_unload: true
+
+  # Should we close player vehicle inventories when they quit?
+  close_vehicle_inventory_on_quit: true
+
+  # Should we destroy invalid spawners that can cause damage to the server?
+  destroy_invalid_spawners: true
+
+# Should we validate teleports?
+# This fixes certain teleport exploits that can lead to certain exploits or duping
+teleport_validator:
+
+  # Should we enable this?
+  enabled: true
+
+  # The delay between portal teleportations (In milliseconds)
+  portal_delay: 1000
+
+  # The delay between world change teleportations (In milliseconds)
+  world_change_delay: 1000
+
+  # The delay between validating and processing portal teleportations (In ticks)
+  validation_delay: 15
+
+# Should we prevent certain exploits with redstone?
+redstone:
+
+  # Should we enable this?
+  enabled: true
+
+  # Should we check for a certain lever crash method?
+  lever_fix: true
+
+  # Should we check for a certain trapdoor redstone crash method?
+  trapdoor_fix: true
+
+  # Should we check for certain piston exploits that allow duplication glitches to occur?
+  # NOTE: This is not needed if your server is up to date, especially if you're using Paper they will most likely be fixed
+  # However this will act as an additional layer of protection
+  piston_fix: true
+
+  # Should we check for a certain dispenser crash method?
+  dispenser_fix: true
+
+# Should we check for large amounts of entities within chunks?
+# NOTE: This will only check for non living entities such as Snowballs, Boats e.t.c
+# This can help prevent crashes due to players abusing throable entities or vehicles
+entity_limit:
+
+  # Should we enable this?
+  # NOTE: This is not supported on Folia
+  enabled: true
+
+  # Should we use an asynchronous task to check for entities in loaded chunks?
+  # Enable this if you need additional protection
+  task: false
+
+  # How often should the task run? (In seconds)
+  task_interval: 30
+
+  # The maximum amount of non living entities allowed in a chunk
+  maximum_amount: 100
+
+# Should we check and manage operators on the server?
+op_protection:
+
+  # Should we enable this?
+  # NOTE: This is not supported on Folia
+  enabled: false
+
+  # Should we use an asynchronous task to check the operators?
+  task: true
+
+  # How often should the task run? (In minutes)
+  task_interval: 60
+
+  # The players listed below will be the only ones allowed to be operators on the server
+  allowed_operators:
+    - Player1
+    - Player2
+
+# Should certain packets be blacklisted?
+disabled_packets:
+
+  # Should we enable this?
+  enabled: false
+
+  # Packets listed below will be cancelled
+  # Make sure the packets listed are in capitals
+  packets:
+    - CRAFT_RECIPE_REQUEST
+
+# Should certain commands be disabled?
+# This can help prevent exploits due to certain plugin exploits
+disabled_commands:
+
+  # Should we enable this?
+  enabled: true
+
+  # All commands sent in a delay smaller than this amount will be cancelled (In milliseconds)
+  # NOTE: This is for all commands, not just disabled ones
+  cooldown: 250
+
+  # What should we replace the disabled command with?
+  replace: /help
+
+  # Commands listed below will be blocked
+  commands:
+    - /$
+    - /skill
+    - /mv ^
+    - /mv (f?
+    - /mvh .*
+    - /mv help <
+    - /mvhelp <
+    - /multiverse-core:mv ^
+    - /to
+    - //to
+    - /fastasyncworldedit:to
+    - //calc
+    - //calculate
+    - //eval
+    - //evaluate
+    - //solve
+    - //asc
+    - //ascend
+    - //desc
+    - //descend
+    - /execute
+    - /promote * a
+    - /pay * a a
+    - /hd readtext
+    - /holo readtext
+    - /hologram readtext
+    - /holograms readtext
+    - /holographicdisplays readtext
+
+# Punish Settings
+punish:
+
+  # The maximum violation amount in order to punish the player
+  max_violations: 5
+
+  # How often should we clear the player violations? (In minutes)
+  violation_reset_interval: 5
+
+  # Should we disconnect the player before executing our commands?
+  # It's highly recommended you keep this setting to true
+  # Do not touch this unless you know what you're doing
+  disconnect: true
+
+  # The commands that will be executed once a player reaches the maximum violation amount
+  # (%nl% for new line)
+  punish_commands:
+    - ban %player% Exploit Attempt
+
+# General Settings
+settings:
+
+  # Should we cancel invalid packets?
+  # This fixes an issue where players can send invalid packets
+  # To mess with our packet listener or cause damage to the server
+  prevent_invalid_packets: true
+
+  # Should we prevent vanilla's anticheat logging?
+  disable_vanilla_anticheat_logging: true
+
+  # Should invalid keep alive packets be cancelled?
+  disable_invalid_keepalives: true
+
+  # Should invalid vehicle movements be cancelled?
+  disable_invalid_vehicle_movements: true
+
+  # Should we cancel packets sent by offline players?
+  disable_offline_packets: true
+
+# Checks Settings
+checks:
+
+  # Invalid Item Check
+  # This checks for invalid items
+  # NOTE: CoffeeProtect automatically assigns the best default values depending on your server
+  # If your server uses any type of custom items plugin that modify the vanilla values
+  # You should disable this check or customize it to fit your server
+  invalid_item:
+
+    # Should we enable this check?
+    enabled: true
+
+    # Should we modify and remove all ASCII values from books?
+    fix_books: true
+
+    # The maximum NBT length (-1 to disable)
+    max_nbt_length: 100000
+
+    # The maximum display name length (-1 to disable)
+    max_displayname_length: 256
+
+    # The maximum lore size (-1 to disable)
+    max_lore_size: 64
+
+    # The maximum lore length (-1 to disable)
+    max_lore_length: 256
+
+    # The maximum stack size (-1 to disable)
+    max_stack_size: 64
+
+    # The maximum durability (-1 to disable)
+    max_durability: 32000
+
+    # The maximum custom model data (-1 to disable)
+    max_custom_model_data: 100000000
+
+    # The maximum color size (-1 to disable)
+    max_color_size: 255
+
+    # The maximum book title length (-1 to disable)
+    max_book_title_length: 32
+
+    # The maximum book author length (-1 to disable)
+    max_book_author_length: 15
+
+    # The maximum book pages (-1 to disable)
+    max_book_pages: 100
+
+    # The maximum book page bytes (-1 to disable)
+    max_book_page_bytes: 300
+
+    # The maximum banner patterns (-1 to disable)
+    max_banner_patterns: 50
+
+    # The maximum firework data (-1 to disable)
+    max_firework_data: 12
+
+    # The maximum firework colors (-1 to disable)
+    max_firework_colors: 12
+
+    # The maximum firework power (-1 to disable)
+    max_firework_power: 3
+
+    # The maximum potion effects (-1 to disable)
+    max_potion_effects: 2
+
+    # The maximum potion duration (-1 to disable)
+    max_potion_duration: 9600
+
+    # The maximum potion amplifier (-1 to disable)
+    max_potion_amplifier: 2
+
+    # The maximum enchantments size (-1 to disable)
+    # NOTE: This is disabled by default since most servers
+    # Exceed the maximum enchantments size
+    max_enchantments_size: -1
+
+    # The maximum enchantment level (-1 to disable)
+    # NOTE: This is disabled by default since most servers
+    # Exceed the maximum enchantment level
+    max_enchantment_level: -1
+
+    # The maximum attributes size (-1 to disable)
+    max_attributes_size: 50
+
+    # The maximum attribute amount (-1 to disable)
+    max_attribute_amount: 100.0
+
+  # Invalid Custom Payload Check
+  # This checks for invalid custom payload packets
+  invalid_custom_payload:
+
+    # Should we enable this check?
+    enabled: true
+
+    # The maximum payload length
+    max_payload_length: 21500
+
+  # Invalid Sequence Check
+  # This checks for invalid packet sequence
+  invalid_sequence:
+
+    # Should we enable this check?
+    enabled: true
+
+  # Invalid Chat Check
+  # This checks for invalid chat messages
+  invalid_chat:
+
+    # Should we enable this check?
+    enabled: true
+
+    # The maximum chat input length allowed
+    max_input_length: 256
+
+  # Invalid Tab Complete Check
+  # This checks for invalid tab complete packets
+  invalid_tab_complete:
+
+    # Should we enable this check?
+    enabled: true
+
+    # Should we prevent certain methods that can allow a player to get the plugin list?
+    prevent_plugins_exploit: true
+
+    # The maximum completion input length allowed
+    max_input_length: 256
+
+  # Invalid Window Click
+  # This checks for invalid window click packets
+  invalid_window_click:
+
+    # Should we enable this check?
+    enabled: true
+
+    # Should we prevent lectern inventories?
+    prevent_lectern_inventory: true
+
+    # Should we prevent swap actions in plugin GUIs?
+    prevent_swaps_in_gui: true
+
+  # Invalid Settings
+  # This checks for invalid settings packets
+  invalid_settings:
+
+    # Should we enable this check?
+    enabled: true
+
+  # Invalid Creative Slot
+  # This checks for invalid creative slot packets
+  invalid_creative_slot:
+
+    # Should we enable this check?
+    enabled: true
+
+  # Invalid Pick Item
+  # This checks for invalid pick item packets
+  invalid_pick_item:
+
+    # Should we enable this check?
+    enabled: true
+
+  # Invalid Entity Action
+  # This checks for invalid entity action packets
+  invalid_entity_action:
+
+    # Should we enable this check?
+    enabled: true
+
+  # Invalid Steer Vehicle
+  # This checks for invalid steer vehicle packets
+  invalid_steer_vehicle:
+
+    # Should we enable this check?
+    enabled: true
+
+  # Invalid Sign
+  # This checks for invalid sign packets
+  invalid_sign:
+
+    # Should we enable this check?
+    enabled: true
+
+    # Should we modify and remove all ASCII values from signs?
+    fix_signs: true
+
+    # The maximum sign text length allowed
+    max_length: 47
+
+  # Invalid Position Check
+  # This checks for invalid position packets
+  invalid_position:
+
+    # Should we enable this check?
+    enabled: true
+
+    # Should player movements inside unloaded chunks be prevented?
+    # This will also prevent hopping between unloaded chunks
+    # This works somewhat similarly to paper's built in config option
+    # NOTE: If that paper option is enabled you should disable this
+    prevent_chunk_overload: true
+
+    # The maximum X, Y and Z
+    max_xyz: 2.9999999E7
+
+    # The maximum yaw
+    max_yaw: 3.4028234E35
+
+    # The maximum pitch
+    max_pitch: 90.0
+
+  # Invalid Block Placement Check
+  # This checks for invalid block placement packets
+  invalid_block_placement:
+
+    # Should we enable this check?
+    enabled: true
+
+    # The maximum placement distance
+    max_distance: 45
+
+  # Invalid Spectate Check
+  # This checks for invalid spectate packets
+  invalid_spectate:
+
+    # Should we enable this check?
+    enabled: true
+
+  # Invalid Recipe Check
+  # This checks for invalid recipe packets
+  invalid_recipe:
+
+    # Should we enable this check?
+    enabled: true
+
+  # Invalid Select Trade Check
+  # This checks for invalid select trade packets
+  invalid_select_trade:
+
+    # Should we enable this check?
+    enabled: true
+
+  # Invalid Abilities Check
+  # This checks for invalid abilities packets
+  invalid_abilities:
+
+    # Should we enable this check?
+    enabled: true
+
+  # Invalid Held Item Change Check
+  # This checks for invalid held item change packets
+  invalid_held_item_change:
+
+    # Should we enable this check?
+    enabled: true
+
+  # Invalid Interact Check
+  # This checks for invalid interact packets
+  invalid_interact:
+
+    # Should we enable this check?
+    enabled: true
