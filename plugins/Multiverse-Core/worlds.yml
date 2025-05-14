@@ -75,7 +75,12 @@ world:
       tick-rate: -1
       spawn-limit: -1
       exceptions: []
-    water_animal:
+    water_underground_creature:
+      spawn: true
+      tick-rate: -1
+      spawn-limit: -1
+      exceptions: []
+    misc:
       spawn: true
       tick-rate: -1
       spawn-limit: -1
@@ -85,12 +90,7 @@ world:
       tick-rate: -1
       spawn-limit: -1
       exceptions: []
-    water_underground_creature:
-      spawn: true
-      tick-rate: -1
-      spawn-limit: -1
-      exceptions: []
-    misc:
+    water_animal:
       spawn: true
       tick-rate: -1
       spawn-limit: -1
